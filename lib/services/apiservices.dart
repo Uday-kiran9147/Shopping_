@@ -3,10 +3,6 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:shopping_ui/models/product.dart';
 
-void main() async {
-  var response = await ApiService().getCategories();
-  print(response);
-}
 
 class ApiService {
   Future<List<String>> getCategories() async {
@@ -27,7 +23,7 @@ class ApiService {
     var url = Uri.parse('https://fakestoreapi.com/products');
     var response = await http.get(url);
     if (response.statusCode == 200) {
-      print("Status Code: ${response.statusCode}");
+      // print("Status Code: ${response.statusCode}");
       var datalist = jsonDecode(response.body) as List; // we get list of maps
       List<ProductModel> products = [];
       for (var data in datalist) {
@@ -39,7 +35,7 @@ class ApiService {
     } else {
       // Request failed, print status code
       print(response.statusCode);
-      return null;
+      return [];
     }
   }
 

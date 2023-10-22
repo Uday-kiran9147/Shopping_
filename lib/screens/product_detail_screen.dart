@@ -40,7 +40,7 @@ class ProductDetailScreen extends StatelessWidget {
             productModel.title,
             maxLines: 2,
             overflow: TextOverflow.visible,
-            style: TextStyle(fontWeight: FontWeight.bold),
+            style: TextStyle(fontWeight: FontWeight.bold,fontSize: 22),
           ),
           Text(
             "\$ " + productModel.price.toString(),

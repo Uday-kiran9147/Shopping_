@@ -70,13 +70,18 @@ class _CategoryItemsState extends State<CategoryItems> {
             scrollDirection: Axis.horizontal,
             itemCount: categories.length,
             itemBuilder: (context, index) {
-              final currentCategory = Provider.of<AppProvider>(context)
-                  .products!
-                  .where((element) => element.category == selectedCategory)
-                  .toList();
-              return ProductTile(
-                productModel: currentCategory[index],
-              );
+              final currentCategory =
+                  Provider.of<AppProvider>(context, listen: false)
+                      .products!
+                      .where((element) => element.category == selectedCategory)
+                      .toList();
+              if (currentCategory.isEmpty) {
+                return Center(child: CircularProgressIndicator());
+              } else {
+                return ProductTile(
+                  productModel: currentCategory[index],
+                );
+              }
             },
           ),
         ),

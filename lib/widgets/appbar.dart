@@ -13,7 +13,7 @@ class AppBarWidget extends StatelessWidget {
           padding: const EdgeInsets.only(left: 10.0),
           child: CircleAvatar(
             backgroundImage: NetworkImage(
-                "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?cs=srgb&dl=pexels-pixabay-220453.jpg&fm=jpg"),
+                "https://img.freepik.com/free-photo/portrait-white-man-isolated_53876-40306.jpg?size=626&ext=jpg&ga=GA1.1.386372595.1697932800&semt=ais"),
           ),
         ),
         SizedBox(width: 10),

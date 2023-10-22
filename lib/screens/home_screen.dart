@@ -94,7 +94,6 @@ class BannerWIdget extends StatelessWidget {
       margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       height: 200,
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey),
         color: Color.fromARGB(255, 223, 199, 145),
         borderRadius: BorderRadius.circular(20),
         image: DecorationImage(
