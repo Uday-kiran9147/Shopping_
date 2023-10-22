@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopping_ui/providers/provider.dart';
-import 'package:shopping_ui/screens/product_detail_screen.dart';
 import 'package:shopping_ui/widgets/product_tile.dart';
 
 class ViewAllProducts extends StatelessWidget {
@@ -12,10 +11,10 @@ class ViewAllProducts extends StatelessWidget {
     final productList = Provider.of<AppProvider>(context).products;
     return Scaffold(
         appBar: AppBar(
-          title: Text("All Products"),
+          title: const Text("All Products"),
         ),
         body: GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             childAspectRatio: 0.7,
           ),

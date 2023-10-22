@@ -4,7 +4,7 @@ import 'package:shopping_ui/providers/provider.dart';
 import 'package:shopping_ui/widgets/product_tile.dart';
 
 class CategoryItems extends StatefulWidget {
-  CategoryItems({super.key});
+  const CategoryItems({super.key});
 
   @override
   State<CategoryItems> createState() => _CategoryItemsState();
@@ -16,7 +16,7 @@ class _CategoryItemsState extends State<CategoryItems> {
   @override
   Widget build(BuildContext context) {
     final categories = Provider.of<AppProvider>(context).categories;
-    return Column(
+    return categories.isEmpty? const LinearProgressIndicator() :Column(
       // shrinkWrap: true,
       children: [
         SizedBox(
@@ -39,7 +39,7 @@ class _CategoryItemsState extends State<CategoryItems> {
                     bottom: 20,
                     right: categories[index] == categories.length - 1 ? 20 : 0,
                   ),
-                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   decoration: BoxDecoration(
                     color: selectedCategory == categories[index]
                         ? Colors.black
@@ -63,8 +63,8 @@ class _CategoryItemsState extends State<CategoryItems> {
             },
           ),
         ),
-        SizedBox(height: 20),
-        Container(
+        const SizedBox(height: 20),
+        SizedBox(
           height: 300,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
@@ -76,7 +76,7 @@ class _CategoryItemsState extends State<CategoryItems> {
                       .where((element) => element.category == selectedCategory)
                       .toList();
               if (currentCategory.isEmpty) {
-                return Center(child: CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
               } else {
                 return ProductTile(
                   productModel: currentCategory[index],

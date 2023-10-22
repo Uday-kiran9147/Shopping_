@@ -18,14 +18,14 @@ class CategotyHeader extends StatelessWidget {
         children: [
           Text(
             category,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
             ),
           ),
-          Spacer(),
+          const Spacer(),
           ActionChip(
-            label: Text("See all"),
+            label: const Text("See all"),
             onPressed: ontap,
           ),
         ],

@@ -13,11 +13,12 @@ class ProductDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: ListView(padding: EdgeInsets.all(8.0), children: [
-          Container(
+        child: ListView(padding: const EdgeInsets.all(8.0), children: [
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.60,
             child: Column(
               children: [
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     BackButton(),
@@ -25,43 +26,42 @@ class ProductDetailScreen extends StatelessWidget {
                     Icon(Icons.favorite_border_outlined),
                   ],
                 ),
-                Container(
+                SizedBox(
                   height: MediaQuery.of(context).size.height * 0.50,
                   child: ClipRRect(
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      borderRadius: const BorderRadius.all(Radius.circular(10)),
                       child: Image.network(productModel.image)),
                 )
               ],
             ),
-            height: MediaQuery.of(context).size.height * 0.60,
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Text(
             productModel.title,
             maxLines: 2,
             overflow: TextOverflow.visible,
-            style: TextStyle(fontWeight: FontWeight.bold,fontSize: 22),
+            style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 22),
           ),
           Text(
-            "\$ " + productModel.price.toString(),
+            "\$ ${productModel.price}",
             textAlign: TextAlign.end,
-            style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Text(productModel.description,maxLines: 4,overflow: TextOverflow.ellipsis,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 15,
               )),
           Container(
               width: MediaQuery.of(context).size.width,
               height: 50,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.black,
                 borderRadius: BorderRadius.all(
                   Radius.circular(20),
                 ),
               ),
-              child: Center(
+              child: const Center(
                 child: Text(
                   "Buy now",
                   style: TextStyle(color: Colors.white, fontSize: 20),

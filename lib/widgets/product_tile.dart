@@ -16,7 +16,7 @@ class ProductTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 160,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.white24,
       ),
       child: Card(
@@ -33,11 +33,11 @@ class ProductTile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
+              SizedBox(
                 height: 300 / 2, // This childs parent height is 150
                 child: Center(
                   child: ClipRRect(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    borderRadius: const BorderRadius.all(Radius.circular(20)),
                     child: Image.network(
                       productModel.image,
                       fit: BoxFit.cover,
@@ -49,11 +49,11 @@ class ProductTile extends StatelessWidget {
                 productModel.title,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
               ),
               Text(
-                "\$ " + productModel.price.toString(),
-                style: TextStyle(
+                "\$ ${productModel.price}",
+                style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),

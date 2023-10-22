@@ -31,24 +31,24 @@ class _MyHomePageState extends State<MyHomePage> {
     final appstate = Provider.of<AppProvider>(context);
     return Scaffold(
       body: appstate.products == null
-          ? CircularProgressIndicator()
+          ? const CircularProgressIndicator()
           : CustomScrollView(
               slivers: [
-                AppBarWidget(),
-                SliverToBoxAdapter(
+                const AppBarWidget(),
+                const SliverToBoxAdapter(
                   // create a text field for searching products
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    padding: EdgeInsets.symmetric(horizontal: 20),
                     child: TextFieldCustom(),
                   ),
                 ),
                 // create a container to show latest deals and offers
-                SliverToBoxAdapter(
+                const SliverToBoxAdapter(
                   child: BannerWIdget(),
                 ),
-                SliverToBoxAdapter(
+                const SliverToBoxAdapter(
                     child: Padding(
-                  padding: const EdgeInsets.all(10.0),
+                  padding: EdgeInsets.all(10.0),
                   child: CategoryItems(),
                 )),
                 SliverToBoxAdapter(
@@ -58,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ViewAllProducts(),
+                          builder: (context) => const ViewAllProducts(),
                         ));
                   },
                 )),
@@ -91,12 +91,12 @@ class BannerWIdget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       height: 200,
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 223, 199, 145),
+        color: const Color.fromARGB(255, 223, 199, 145),
         borderRadius: BorderRadius.circular(20),
-        image: DecorationImage(
+        image: const DecorationImage(
           image: NetworkImage("https://i.imgur.com/uDpzwEk.jpeg"),
           fit: BoxFit.cover,
         ),

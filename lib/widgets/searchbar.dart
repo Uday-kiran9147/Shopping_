@@ -10,7 +10,7 @@ class TextFieldCustom extends StatelessWidget {
     return TextField(
       decoration: InputDecoration(
         hintText: 'Search Products',
-        prefixIcon: Icon(Icons.search),
+        prefixIcon: const Icon(Icons.search),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20),
           borderSide: BorderSide.none,
