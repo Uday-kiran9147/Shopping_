@@ -8,13 +8,13 @@ void main() {
     test("Get products from products list ", () async {
       final productslist = await ApiService().getProducts();
 
-      expect(productslist!.length, 20); // we expect 20 products
+      expect(productslist!.length, 20); // we expect 20 products from the URL
     });
 
     test("Get categories from categories list ", () async {
       final categorieslist = await ApiService().getCategories();
 
-      expect(categorieslist.length, 4); // we expect 5 categories
+      expect(categorieslist.length, 4); // we expect 5 categories from the URL
     });
   });
 }
