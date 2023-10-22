@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shopping_ui/providers/provider.dart';
+import 'package:shopping_ui/widgets/product_tile.dart';
 
 class CategoryItems extends StatefulWidget {
   CategoryItems({super.key});
@@ -8,81 +11,71 @@ class CategoryItems extends StatefulWidget {
 }
 
 class _CategoryItemsState extends State<CategoryItems> {
-  String selectedCategory = 'Category 1';
-  // Default selected category
-  Map<String, List<String>> items = {
-    'Category 1': ['Item 1A', 'Item 1B', 'Item 1C'],
-    'Category 2': ['Item 2A', 'Item 2B'],
-    'Category 3': ['Item 3A', 'Item 3B', 'Item 3C'],
-  };
+  String selectedCategory = 'electronics';
 
   @override
   Widget build(BuildContext context) {
+    final categories = Provider.of<AppProvider>(context).categories;
     return Column(
+      // shrinkWrap: true,
       children: [
-        Row(
-          children: items.keys.map((category) {
-            return GestureDetector(
-              onTap: () => {
-                setState(() {
-                  selectedCategory = category;
-                })
-              },
-              child: Container(
-                margin: EdgeInsets.only(
-                  left: 20,
-                  top: 20,
-                  bottom: 20,
-                  right: category == items.length - 1 ? 20 : 0,
-                ),
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                decoration: BoxDecoration(
-                  color: selectedCategory == category
-                      ? Colors.blue
-                      : Colors.grey[200],
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Center(
-                  child: Text(
-                    category,
-                    style: TextStyle(
-                      color: selectedCategory == category
-                          ? Colors.white
-                          : Colors.black,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
+        SizedBox(
+          height: 80,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            shrinkWrap: true,
+            itemCount: categories.length,
+            itemBuilder: (context, index) {
+              return GestureDetector(
+                onTap: () => {
+                  setState(() {
+                    selectedCategory = categories[index];
+                  })
+                },
+                child: Container(
+                  margin: EdgeInsets.only(
+                    left: 20,
+                    top: 20,
+                    bottom: 20,
+                    right: categories[index] == categories.length - 1 ? 20 : 0,
+                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  decoration: BoxDecoration(
+                    color: selectedCategory == categories[index]
+                        ? Colors.black
+                        : Colors.grey[300],
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Center(
+                    child: Text(
+                      categories[index],
+                      style: TextStyle(
+                        color: selectedCategory == categories[index]
+                            ? Colors.white
+                            : Colors.black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
-              ),
-            );
-          }).toList(),
+              );
+            },
+          ),
         ),
         SizedBox(height: 20),
         Container(
-          height: 200,
+          height: 300,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: items[selectedCategory]!.length,
+            itemCount: categories.length,
             itemBuilder: (context, index) {
-              final item = items[selectedCategory]![index];
-              return Container(
-                margin: EdgeInsets.only(left: 20),
-                width: 150,
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Center(
-                  child: Text(
-                    item,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
+              final currentCategory = Provider.of<AppProvider>(context)
+                  .products!
+                  .where((element) => element.category == selectedCategory)
+                  .toList();
+              return ProductTile(
+                productModel: currentCategory[index],
               );
             },
           ),
