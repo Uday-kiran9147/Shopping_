@@ -1,4 +1,3 @@
-# LiftU.tech
 
 A new Flutter project.
 
